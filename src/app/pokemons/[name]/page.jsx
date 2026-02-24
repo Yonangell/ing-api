@@ -18,9 +18,7 @@ export default function PokemonDetailPage() {
     return (
       <div className="text-center py-10">
         <p>No se encontró el Pokémon</p>
-        <Button onClick={() => router.push("/pokemons")}>
-          Volver
-        </Button>
+        <Button onClick={() => router.push("/pokemons")}>Volver</Button>
       </div>
     );
   }

@@ -16,9 +16,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-gray-100 dark:bg-neutral-400 transition-colors">
         <ThemeProvider>
-          <MainLayout>
-            {children}
-            </MainLayout>
+          <MainLayout>{children}</MainLayout>
         </ThemeProvider>
       </body>
     </html>

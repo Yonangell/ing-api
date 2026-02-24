@@ -1,6 +1,6 @@
 export default function Button({ onClick, children, variant = "primary" }) {
   const base =
-    "px-3 py-1 rounded-2xl font-medium cursor-pointer transition-colors duration-200";
+    "px-3 py-1 rounded-xl font-medium cursor-pointer transition-colors duration-200";
 
   const style = {
     primary: "bg-blue-500 text-white hover:bg-blue-600",

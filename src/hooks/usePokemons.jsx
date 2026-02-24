@@ -10,12 +10,12 @@ export default function usePokemons(limit = 20) {
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=${limit}`
+        `https://pokeapi.co/api/v2/pokemon?limit=${limit}`,
       );
       const data = await res.json();
 
       const details = await Promise.all(
-        data.results.map(p => fetch(p.url).then(r => r.json()))
+        data.results.map((p) => fetch(p.url).then((r) => r.json())),
       );
 
       setPokemons(details.map(mapPokemonDetail));
