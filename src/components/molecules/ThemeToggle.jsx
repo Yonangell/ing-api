@@ -1,14 +1,16 @@
+// src/components/molecules/ThemeToggle.jsx
 "use client";
-
-import Button from "@/components/atoms/Button";
 import { useTheme } from "@/context/ThemeContext";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-
+  
   return (
-    <Button onClick={toggleTheme}>
-      {theme === "dark" ? "☀ Light" : "🌙 Dark"}
-    </Button>
+    <button 
+      onClick={toggleTheme}
+      className="p-2 border rounded bg-blue-400 dark:bg-neutral-700 cursor-pointer"
+    >
+      {theme === "light" ? "🌙 Oscuro" : "☀️ Claro"}
+    </button>
   );
 }

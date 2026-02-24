@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+/* Esto es un "hack" necesario en v4 para que reconozca la variante .dark manual */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-white text-black transition-colors duration-300;
+  }
+}

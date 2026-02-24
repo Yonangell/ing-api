@@ -7,15 +7,15 @@ export default function PokemonDetail({ pokemon }) {
   const weightInKilos = pokemon.weight / 10;
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 transition-all hover:shadow-2xl">
+    <div className="max-w-md mx-auto p-6 bg-blue-300 dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 transition-all hover:shadow-2xl">
       <div className="flex justify-between items-center mb-4">
-        <span className="text-sm font-mono font-bold text-gray-400">
+        <span className="text-sm font-mono font-bold bg-gray-400 dark:bg-gray-700 text-black dark:text-white px-2 py-1 rounded-2xl">
           #{pokemon.id.toString().padStart(3, "0")}
         </span>
         <PokemonTypes types={pokemon.types} />
       </div>
 
-      <div className="relative bg-gray-50 dark:bg-gray-900 rounded-full p-4 mb-4">
+      <div className="relative bg-blue-100 dark:bg-gray-900 rounded-full p-4 mb-4">
         <Image
           src={pokemon.image}
           alt={pokemon.name}
@@ -68,7 +68,7 @@ export default function PokemonDetail({ pokemon }) {
           </div>
         </div>
 
-        <div className="pt-4 text-sm text-left bg-gray-50 dark:bg-gray-900 p-4 rounded-xl">
+        <div className="pt-4 text-sm text-left bg-blue-100 dark:bg-gray-900 p-4 rounded-xl">
           <p className="mb-1">
             <span className="text-gray-500">Habilidades:</span>{" "}
             <span className="font-semibold capitalize">

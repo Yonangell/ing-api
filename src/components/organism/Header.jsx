@@ -8,10 +8,10 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <header className="flex justify-between items-center p-4 border-b bg-white dark:bg-neutral-600 dark:border-neutral-700">
+    <header className="flex justify-between items-center p-4 border-b bg-blue-100 transition-colors dark:bg-neutral-900 dark:border-neutral-700">
       <h1
         onClick={() => router.push("/")}
-        className="text-2xl font-bold cursor-pointer"
+        className="text-2xl font-bold text-blue-700 dark:text-white"
       >
         PokeApi
       </h1>
