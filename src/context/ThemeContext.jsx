@@ -7,7 +7,6 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("light");
   const [mounted, setMounted] = useState(false);
 
-  // Usamos useEffect para la hidratación inicial
   useEffect(() => {
     const saved = localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -16,11 +15,9 @@ export function ThemeProvider({ children }) {
       setTheme("dark");
     }
     
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true); 
   }, []);
 
-  // Sincronizamos la clase 'dark' en el HTML
   useEffect(() => {
     if (mounted) {
       document.documentElement.classList.toggle("dark", theme === "dark");

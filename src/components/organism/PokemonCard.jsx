@@ -10,7 +10,7 @@ export default function PokemonCard({ pokemon }) {
   return (
     <article
       onClick={() => router.push(`/pokemons/${pokemon.name}`)}
-      className="cursor-pointer bg-blue-100 dark:bg-neutral-800 rounded-xl shadow p-4 hover:scale-105 transition-transform duration-200"
+      className="cursor-pointer bg-blue-100 dark:bg-neutral-800 rounded-2xl shadow p-4 hover:scale-105 transition-transform duration-200"
     >
       <Image
         src={pokemon.image}

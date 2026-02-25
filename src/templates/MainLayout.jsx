@@ -1,7 +1,6 @@
 "use client";
 
 import Header from "@/components/organism/Header";
-import { ThemeProvider } from "@/context/ThemeContext";
 
 export default function MainLayout({ children }) {
   return (

@@ -7,9 +7,9 @@ export default function PokemonDetail({ pokemon }) {
   const weightInKilos = pokemon.weight / 10;
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-blue-300 dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 transition-all hover:shadow-2xl">
+    <div className="max-w-md mx-auto p-6 bg-blue-300 dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-800 dark:border-gray-300 transition-all hover:shadow-2xl">
       <div className="flex justify-between items-center mb-4">
-        <span className="text-sm font-mono font-bold bg-gray-400 dark:bg-gray-700 text-black dark:text-white px-2 py-1 rounded-2xl">
+        <span className="text-xs font-mono font-bold bg-gray-400 dark:bg-gray-700 text-black dark:text-white px-2 py-1 rounded-2xl">
           #{pokemon.id.toString().padStart(3, "0")}
         </span>
         <PokemonTypes types={pokemon.types} />

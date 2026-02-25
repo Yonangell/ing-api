@@ -6,7 +6,7 @@ import Loader from "@/components/atoms/Loader";
 import Title from "@/components/atoms/Title";
 
 export default function PokemonsPage() {
-  const { pokemons, loading } = usePokemons(24);
+  const { pokemons, loading } = usePokemons(40);
 
   if (loading) return <Loader />;
 
