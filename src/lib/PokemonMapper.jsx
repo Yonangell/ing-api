@@ -1,4 +1,4 @@
-// 🔹 Mapper para la lista (cuando solo tienes name y url)
+
 export function mapPokemonList(data) {
   return {
     name: data.name,
@@ -6,7 +6,6 @@ export function mapPokemonList(data) {
   };
 }
 
-// 🔹 Mapper para el detalle completo
 export function mapPokemonDetail(data) {
   return {
     id: data.id,

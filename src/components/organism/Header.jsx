@@ -11,7 +11,7 @@ export default function Header() {
     <header className="flex justify-between items-center p-4 border-b bg-blue-100 transition-colors dark:bg-neutral-900 dark:border-neutral-700">
       <h1
         onClick={() => router.push("/")}
-        className="text-2xl font-bold text-blue-700 dark:text-white"
+        className="text-2xl font-bold text-blue-700 dark:text-white cursor-pointer"
       >
         PokeApi
       </h1>

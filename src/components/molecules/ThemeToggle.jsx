@@ -9,7 +9,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       className="p-2 border rounded bg-blue-400 dark:bg-neutral-700 cursor-pointer"
     >
-      {theme === "light" ? "🌙 Oscuro" : "☀️ Claro"}
+      {theme === "light" ? "🌙" : "☀️"}
     </button>
   );
 }
