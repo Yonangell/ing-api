@@ -1,4 +1,3 @@
-
 export function mapPokemonList(data) {
   return {
     name: data.name,

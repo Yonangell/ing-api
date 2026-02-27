@@ -7,10 +7,10 @@ export default function Button({
   disabled = false,
 }) {
   const base =
-    "px-3 py-1 rounded font-medium transition disabled:opacity-50 disabled:cursor-not-allowed";
+    "px-3 py-1 rounded font-medium transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
 
   const styles = {
-    primary: "bg-blue-500 text-white hover:bg-blue-700",
+    primary: "bg-blue-500 text-white hover:bg-blue-700 cursor-pointer",
     outline: "border dark:border-neutral-600",
   };
 

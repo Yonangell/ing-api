@@ -1,67 +1,31 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import usePokemons from "@/hooks/usePokemons";
-import useDebounce from "@/hooks/useDebounce";
-
-import PokemonCard from "@/components/organism/PokemonCard";
-import Loader from "@/components/atoms/Loader";
-import Title from "@/components/atoms/Title";
+import { useState } from "react";
+import { usePokemons } from "@/hooks/usePokemons";
 import SearchBar from "@/components/molecules/SearchBar";
+import PokemonList from "@/components/organism/PokemonList";
 import Paginacion from "@/components/molecules/Paginacion";
 
 export default function PokemonsPage() {
   const [page, setPage] = useState(1);
-
-  const { pokemons, loading, totalPages } = usePokemons(page, 12);
-
-  // 🔎 búsqueda
   const [search, setSearch] = useState("");
-  const debouncedSearch = useDebounce(search, 300);
 
-  // 🔎 filtro
-  const filteredPokemons = useMemo(() => {
-    if (!debouncedSearch) return pokemons;
+  const { pokemons, loading, error } = usePokemons(page, search);
 
-    return pokemons.filter((p) =>
-      p.name.toLowerCase().includes(debouncedSearch.toLowerCase())
-    );
-  }, [pokemons, debouncedSearch]);
-
-  if (loading) return <Loader />;
+  const handleSearch = (value) => {
+    setSearch(value);
+    setPage(1);
+  };
 
   return (
-    <section className="space-y-6">
-      <div className="text-center">
-        <Title>Listado de Pokémons</Title>
-      </div>
+    <main className="container mx-auto p-4 space-y-6">
+      <SearchBar onSearch={handleSearch} />
 
-      {/* 🔎 Search */}
-      <SearchBar
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      {error && <p className="text-red-500">{error}</p>}
 
-      {/* grid */}
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {filteredPokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} />
-        ))}
-      </div>
+      <PokemonList pokemons={pokemons} loading={loading} />
 
-      {/* empty */}
-      {filteredPokemons.length === 0 && (
-        <p className="text-center opacity-70">
-          No se encontraron pokémons
-        </p>
-      )}
-
-      {/* 📄 Pagination */}
-      <Paginacion
-        currentPage={page}
-        totalPages={totalPages}
-        onPageChange={setPage}
-      />
-    </section>
+      {!search && <Paginacion page={page} onPageChange={setPage} />}
+    </main>
   );
 }

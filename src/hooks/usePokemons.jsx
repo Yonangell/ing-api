@@ -1,43 +1,57 @@
-"use client";
-
+// hooks/usePokemons.js
 import { useEffect, useState } from "react";
-import { mapPokemonDetail } from "@/lib/PokemonMapper";
 
-export default function usePokemons(page = 1, limit = 12) {
+export function usePokemons(page, search) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [total, setTotal] = useState(0);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchPokemons = async () => {
       setLoading(true);
+      setError(null);
 
       try {
+        const limit = 40;
         const offset = (page - 1) * limit;
 
-        const res = await fetch(
-          `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-        );
+        const isSearching =
+          search && typeof search === "string" && search.trim() !== "";
+        {
+          /*console.log("Intentando buscar:", search);*/
+        }
+        const url = isSearching
+          ? `https://pokeapi.co/api/v2/pokemon/${search.toLowerCase().trim()}`
+          : `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
+
+        const res = await fetch(url);
+
+        if (!res.ok) {
+          throw new Error(
+            res.status === 404
+              ? "Pokémon no encontrado"
+              : "Error en el servidor",
+          );
+        }
+
         const data = await res.json();
 
-        setTotal(data.count);
-
-        const details = await Promise.all(
-          data.results.map((p) => fetch(p.url).then((r) => r.json()))
+        const results = data.results ? data.results : [data];
+        setPokemons(results);
+      } catch (err) {
+        setError(
+          err.message === "Failed to fetch"
+            ? "Error de conexión con la API"
+            : err.message,
         );
-
-        setPokemons(details.map(mapPokemonDetail));
-      } catch (error) {
-        console.error(error);
+        setPokemons([]);
       } finally {
         setLoading(false);
       }
-    }
+    };
 
-    fetchData();
-  }, [page, limit]);
+    fetchPokemons();
+  }, [page, search]);
 
-  const totalPages = Math.ceil(total / limit);
-
-  return { pokemons, loading, totalPages };
+  return { pokemons, loading, error };
 }

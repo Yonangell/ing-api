@@ -8,7 +8,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <title>My Next.js App</title>
-        <link rel="icon" href="/assets/image/pokemon-ir.png" type="image/x-icon" />
+        <link
+          rel="icon"
+          href="/assets/image/pokemon-ir.png"
+          type="image/x-icon"
+        />
       </head>
       <body className="bg-blue-400 text-gray-900 dark:bg-neutral-900 dark:text-white">
         <ThemeProvider>

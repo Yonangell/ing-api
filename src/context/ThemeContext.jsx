@@ -9,13 +9,15 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+
     if (saved === "dark" || (!saved && prefersDark)) {
       setTheme("dark");
     }
-    
-    setMounted(true); 
+
+    setMounted(true);
   }, []);
 
   useEffect(() => {
