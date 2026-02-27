@@ -30,7 +30,7 @@ export default function PokemonCard({ pokemon, index }) {
         )}
 
         <div className="relative z-10 mt-4">
-          <p className="text-center text-[12px] font-bold text-gray-500 dark:text-white opacity-80 tracking-widest uppercase">
+          <p className="text-center text-lg font-bold text-gray-500 dark:text-white opacity-80 tracking-widest uppercase">
             # {pokemonId?.toString().padStart(3, "0")}
           </p>
           <h3 className="text-center capitalize text-lg font-black text-gray-500 dark:text-gray-700 group-hover:text-blue-300 transition-colors duration-300 tracking-tight">
