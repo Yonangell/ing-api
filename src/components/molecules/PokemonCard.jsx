@@ -11,7 +11,7 @@ export default function PokemonCard({ pokemon, index }) {
 
   return (
     <Link href={`/pokemons/${pokemon.name}`}>
-      <article className="group relative p-6 rounded-2xl border border-white/10 bg-blue-200 dark:bg-blue-400 backdrop-blur-md hover:bg-slate-700 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_0_50px_rgba(37,99,235,0.6)] cursor-pointer overflow-hidden box-border">
+      <article className="group relative p-6 rounded-2xl border border-white/10 bg-blue-300 dark:bg-slate-500 backdrop-blur-md hover:bg-slate-700 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(20,38,108,0.3)] dark:hover:shadow-[0_0_50px_rgba(37,99,235,0.6)] cursor-pointer overflow-hidden box-border">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {imageUrl ? (
