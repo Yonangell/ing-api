@@ -1,4 +1,3 @@
-// hooks/usePokemons.js
 import { useEffect, useState } from "react";
 
 export function usePokemons(page, search) {
@@ -15,28 +14,30 @@ export function usePokemons(page, search) {
         const limit = 40;
         const offset = (page - 1) * limit;
 
-        const isSearching =
-          search && typeof search === "string" && search.trim() !== "";
-        {
-          /*console.log("Intentando buscar:", search);*/
-        }
-        const url = isSearching
-          ? `https://pokeapi.co/api/v2/pokemon/${search.toLowerCase().trim()}`
-          : `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
+        const url =
+          search && search.trim() !== ""
+            ? `https://pokeapi.co/api/v2/pokemon/?limit=1300`
+            : `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
 
         const res = await fetch(url);
-
-        if (!res.ok) {
-          throw new Error(
-            res.status === 404
-              ? "Pokémon no encontrado"
-              : "Error en el servidor",
-          );
-        }
+        if (!res.ok) throw new Error("Error al obtener datos");
 
         const data = await res.json();
+        let results = data.results;
 
-        const results = data.results ? data.results : [data];
+        if (search && search.trim() !== "") {
+          const term = search.toLowerCase().trim();
+
+          results = results.filter((p) => {
+            const urlParts = p.url.split("/");
+            const pokemonId = urlParts[urlParts.length - 2];
+
+            return p.name.includes(term) || pokemonId === term;
+          });
+
+          if (results.length === 0) throw new Error("Pokémon no encontrado");
+        }
+
         setPokemons(results);
       } catch (err) {
         setError(
